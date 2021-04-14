@@ -3,8 +3,7 @@ package com.company;
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println("Hello");
-        String[][] gameboard = initBoard(8, 8);
+        String[][] gameboard = initBoard(11, 11);
         drawBoard(gameboard);
     }
     
@@ -20,8 +19,27 @@ public class Main {
     }
 
     public static void drawBoard(String[][] gameMap){
+        String[] notationHorizontal = new String[gameMap.length];
+        int firstAsciiChar = 65;
         for(int i=0; i<gameMap.length; i++){
+            if(i==0){
+                for(int j=0; j<gameMap[i].length; j++){
+                    if (j==0){
+                        System.out.print("     ");
+                    }
+                    String str = Character.toString((char) firstAsciiChar+j);
+                    System.out.print("  " + str + " ");
+                }
+                System.out.println();
+            }
             for(int j=0; j<gameMap[i].length; j++){
+                if(j==0){
+                    if(i+1<10){
+                        System.out.print("  " + (i+1) + "  ");
+                    }else{
+                        System.out.print("  " + (i+1) + " ");
+                    }
+                }
                 System.out.print(gameMap[i][j]);
             }
             System.out.println("|");
