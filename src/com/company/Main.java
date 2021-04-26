@@ -3,8 +3,10 @@ package com.company;
 public class Main {
 
     public static void main(String[] args) {
+        ShipmentInitialization shipmentInitialization = new ShipmentInitialization();
         String[][] gameboard = initBoard(11, 11);
         drawBoard(gameboard);
+//        ship.putShip();
     }
     
     public static String[][] initBoard(int x, int y){
