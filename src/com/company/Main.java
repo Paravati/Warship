@@ -1,13 +1,30 @@
 package com.company;
 
-public class Main {
+import java.io.IOException;
 
+public class Main {
+    public static final String ANSI_BLUE = "\u001B[34m";
+    public static final String ANSI_PURPLE = "\u001B[35m";
     public static void main(String[] args) {
         String[][] gameboard = initBoard(11, 11);
         ShipmentInitialization shipmentInitialization = new ShipmentInitialization();
         drawBoard(gameboard);
         ShipmentInitialization.begin(gameboard);
+        clearScreen();
         drawBoard(gameboard);
+    }
+
+    public static void clearScreen(){
+        try {
+
+            if (System.getProperty("os.name").contains("Windows")){
+                new ProcessBuilder("cmd", "/c",
+                        "cls").inheritIO().start().waitFor();
+                Runtime.getRuntime().exec("cls");
+            }
+            else
+                Runtime.getRuntime().exec("clear");
+        } catch (IOException | InterruptedException ex) {}
     }
 
     public static String[][] initBoard(int x, int y){
